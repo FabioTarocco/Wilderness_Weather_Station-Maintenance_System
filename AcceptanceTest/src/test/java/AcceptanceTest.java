@@ -127,6 +127,7 @@ public class AcceptanceTest {
         tester.setTextField("op_surname","Zecchin");
         tester.setTextField("reason","Testing");
         tester.submit("dis_butt");
+        tester.assertTextPresent("GREY");
         tester.assertTextPresent("Weather Stations List");
     }
 
@@ -163,11 +164,38 @@ public class AcceptanceTest {
         tester.setTextField("Altitude","56");
         tester.submit();
         tester.assertTextPresent("Weather Stations List");
+        tester.clickLinkWithText("Reactivate");
+        tester.assertTextPresent("Reactivating Weather Station Monitoring");
+        tester.submit("reactivate");
+        tester.assertTextPresent("GREEN");
+
+    }
+
+    @Test
+    public void disableReactivateTest(){
+        tester.beginAt("/main_view");
+
+        tester.clickButtonWithText("Add Weather Station");
+        tester.assertTextPresent("Integrate New Weather Station");
+        tester.setTextField("Nation","Francia");
+        tester.setTextField("Location","Parigi");
+        tester.setTextField("Altitude","56");
+        tester.submit();
+        tester.assertTextPresent("Weather Stations List");
+
+        tester.clickLinkWithText("Disable");
+        tester.assertTextPresent("Disable Weather Station Monitoring");
+        tester.setTextField("op_name","Leonardo");
+        tester.setTextField("op_surname","Zecchin");
+        tester.setTextField("reason","Testing");
+        tester.submit("dis_butt");
+        tester.assertTextPresent("GREY");
+        tester.assertTextPresent("Weather Stations List");
 
         tester.clickLinkWithText("Reactivate");
         tester.assertTextPresent("Reactivating Weather Station Monitoring");
         tester.submit("reactivate");
-
+        tester.assertTextPresent("GREEN");
     }
 
 
