@@ -202,7 +202,7 @@ Lo Status della WS può quindi essere riassunto in questo schema:
 *Flusso delle operazioni* : Il tecnico deve andare nell'apposita sezione di disattivazione mediante il pulsante *Disable*. Il sistema passa alla schermata *Disable_ws_view* di disattivazione. Il tecnico deve ora inserire la motivazione per disabilitare la WS, il suo nome e cognome. Il tecnico puoi deve confermare l'operazione con l'apposito tasto "Disable". Il sistema inoltra la richiesta al db per effettuare il cambio di stato_ws a GREY e aggiorna lo storico delle operazioni effettuate su di essa. Il sistema poi ritorna alla *main_view*. Durante questa procedura il tecnico potrà comunque tornare alla *main_view* attraverso l'apposito pulsante.  
   
 *Eventuali problemi*: Non è possibile caricare la schermata della disabilitazione della WS. Il sistema visualizza un messaggio di errore *not_found* quindi potrà tornare mediante il tasto *indietro* del browser alla *main_view*.   
-Il sistema non elabora fino alla fine la richiesta di disabilitazione o la richiesta di intervento non viene correttamente inoltrata al db. Questo sorge nel momento in cui non vengono inseriti i campi richiesti: nome, cognome e motivazione. Quindi il tecnico sarà riporato nella *disable_ws_view* per effettuare il nuovo inserimento.  
+Il sistema non elabora fino alla fine la richiesta di disabilitazione o la richiesta di intervento non viene correttamente inoltrata al db. Questo sorge nel momento in cui non vengono inseriti i campi richiesti: nome, cognome e motivazione. Quindi il tecnico sarà porato nella *dataError_view* dove verrà mostrato un messaggio di errore e mediante apposito tasto potrà tornare alla *main_view* 
   
 *Stato del sistema dopo il completamento*: Il sistema deve aver effettuato il cambio fra *disable_ws_view* a *main_view*. Inoltre, i dati della segnalazione devono esser riportati all'interno delle informazioni contenute nella WS che ha subito la disattivazione.  
   
@@ -213,7 +213,7 @@ Il sistema non elabora fino alla fine la richiesta di disabilitazione o la richi
 *Flusso delle operazioni* : Il tecnico deve andare nell'apposita sezione di segnalazione mediante il pulsante *Request maintenance*. Il sistema deve quindi passare alla *report_view* e caricare la localizzazione e il codice della WS. Il tecnico deve ora inserire il report del guasto, il proprio nome e cognome, eventuali note aggiutive. Quando tutti i dati sono stati inseriti deve premere sull'apposito pulsante per inoltrare la richiesta. Con l'inoltro della richiesta il sistema inserisce la data e ora della richiesta. Il sistema aggiorna di dati della WS su cui è stato richiesto l'intervento speciale e poi ritorna alla *main_view*. Durante questa procedura il tecnico potrà comunque tornare alla *main_view* attraverso l'apposito pulsante.  
   
 *Eventuali problemi*: Il caricamento dei dati della WS non va a buon fine. Il sistema visualizzerà un messaggio di errore e il tecnico verrà riportato nella schermata *not_found*.   
-Il sistema non elabora fino alla fine la richiesta di intervento o la richiesta di intervento non viene correttamente inoltrato al db. Questo sorge nel momento in cui non vengono inseriti i campi richiesti: nome, cognome e motivazione In questo caso il tecnico verrà riportato alla *report_view*.  
+Il sistema non elabora fino alla fine la richiesta di intervento o la richiesta di intervento non viene correttamente inoltrato al db. Questo sorge nel momento in cui non vengono inseriti i campi richiesti: nome, cognome e motivazione. Le note sono opzionali, quindi non generano errore. Quindi il tecnico sarà porato nella *dataError_view* dove verrà mostrato un messaggio di errore e mediante apposito tasto potrà tornare alla *main_view* 
   
 *Stato del sistema dopo il completamento*: Il sistema deve aver effettuato il cambio fra *report_view* e *main_view*. Inoltre, i dati della segnalazione devono esser riportati all'interno delle informazioni contenute nella WS che ha subito l'intervento.  
   
@@ -224,7 +224,7 @@ Il sistema non elabora fino alla fine la richiesta di intervento o la richiesta 
 *Flusso delle operazioni* : Il tecnico deve andare nell'apposita sezione di aggiunta dispositivi mediante il pulsante *Add Weather Station*. Il sistema deve quindi passare alla *integration_view*. Il tecnico quindi inserisce i dati relativi alla zona geografica del sito di installazione della WS, l'altitudine e la localizzazione. Il tecnico deve poi premere il pulsate di *Send request* per inoltrare la richiesta di aggiunta della WS al sistema. Il sistema riceve le informazioni date dal tecnico e aggiunge un Codice univoco identificativo della WS, generato in base alla localizzazione e una sottostring generata casualmente. La nuova WS viene inserita del DB e viene effettuato un nuovo caricamento delle WS nella main_view. Il sistema quindi passa alla *main_view*.  
 Durante questa procedura il tecnico potrà comunque tornare alla *main_view* attraverso l'apposito pulsante.  
   
-*Eventuali problemi*:  Il sistema non elabora fino alla fine la richiesta di aggiunta o la nuova WS  non viene correttamente inoltrata al db. Questo sorge nel momento in cui non vengono inseriti i campi richiesti: nazione, posizione e altitudine, oppure se il valore dell'altitudine inserita non è nel range [-30 mt, +8000 mt]. In questo caso iil tecnico verrà riportato alla *integration_view*.  
+*Eventuali problemi*:  Il sistema non elabora fino alla fine la richiesta di aggiunta o la nuova WS  non viene correttamente inoltrata al db. Questo sorge nel momento in cui non vengono inseriti i campi richiesti: nazione, posizione e altitudine, oppure se il valore dell'altitudine inserita non è nel range [-30 mt, +8000 mt]. Quindi il tecnico sarà porato nella *dataError_view* dove verrà mostrato un messaggio di errore e mediante apposito tasto potrà tornare alla *main_view*In questo caso iil tecnico verrà riportato alla *integration_view*.  
   
 *Stato del sistema dopo il completamento*: Il sistema deve aver effettuato il cambio fra *integration_view* e *main_view*. Inoltre, il sistema deve effettuare un refresh delle WS che inizialmente vengono caricate in modo da visualizzare anche quella appena inserita.  
   
@@ -263,6 +263,24 @@ Per quanto riguarda le attività *Aggiungi WS, Disabilita WS* e *Richiedi Interv
 Realizzato mediante [StarUML](https://staruml.io/).
 
 ![ActivityDiagram1](https://user-images.githubusercontent.com/54395661/130351510-c1cda7c0-c06a-47f1-86a0-f7d02733a962.jpg)
+
+### Diagramma di sequenza (Sequence Diagram)
+Per quanto riguarda il diagramma di sequenza abbiamo optato per la visualizzazione delle attività che un tecnico può compiere in quanto non esiste una vera a propria esecuzione generale del sistema, ma tutto gira attorno alle attività che vengono effettuate.
+
+Inoltre come già anticipato nel diagramma delle attività in ogni momento è sempre possibile tornare alla schermata principale mediante l'apposito tasto in ogni interfaccia secondaria.
+
+**Aggiunta WS**:
+![WSAdd](https://user-images.githubusercontent.com/54395661/130785648-0cc36769-7c4d-4bc0-8c01-63dfb0a2996d.jpeg)
+**Eliminazione WS**:
+![WSDelete](https://user-images.githubusercontent.com/54395661/130785655-010feea4-187a-415a-8df5-6a1baf3a3053.jpeg)
+**Dettagli WS**:
+![WSDetail](https://user-images.githubusercontent.com/54395661/130785662-062e6d53-2d85-4b44-a3c7-ba9c87439091.jpeg)
+**Disabilita WS**:
+![WSDisable](https://user-images.githubusercontent.com/54395661/130785665-bc479d92-8a65-45bf-96c6-f7c1204f9ce5.jpeg)
+**Riattivazione WS**:
+![WSReactivate](https://user-images.githubusercontent.com/54395661/130785668-6c5e7a34-3e77-4279-bcf4-3dc972a4df67.jpeg)
+**Richiesta intervento speciale WS**:
+![WSReport](https://user-images.githubusercontent.com/54395661/130785672-3e778adc-3338-4849-b96f-d22c7a39fecb.jpeg)
 
 
 ## Fase di Testing
