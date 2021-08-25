@@ -35,6 +35,15 @@ public class AcceptanceTest {
     }
 
     @Test
+    public void addnewWeatherStationErrorTest(){
+        tester.beginAt("/");
+        tester.clickButtonWithText("Add Weather Station");
+        tester.assertTextPresent("Integrate New Weather Station");
+        tester.submit();
+        tester.assertTextPresent("ERROR:");
+    }
+
+    @Test
     public void IfAddWSTest(){
         tester.beginAt("/main_view");
 
@@ -131,6 +140,23 @@ public class AcceptanceTest {
         tester.assertTextPresent("Weather Stations List");
     }
 
+    @Test
+    public void disableErrorTest(){
+        tester.beginAt("/main_view");
+        tester.clickButtonWithText("Add Weather Station");
+        tester.assertTextPresent("Integrate New Weather Station");
+        tester.setTextField("Nation","Italia33");
+        tester.setTextField("Location","Chiampo33");
+        tester.setTextField("Altitude","10");
+        tester.submit();
+        tester.assertTextPresent("Weather Stations List");
+
+        tester.clickLinkWithText("Disable");
+        tester.assertTextPresent("Disable Weather Station Monitoring");
+        tester.submit("dis_butt");
+        tester.assertTextPresent("ERROR:");
+    }
+
 
 
     @Test
@@ -224,6 +250,45 @@ public class AcceptanceTest {
     }
 
     @Test
+    public void requestNoNotesTest(){
+        tester.beginAt("/main_view");
+
+        tester.clickButtonWithText("Add Weather Station");
+        tester.assertTextPresent("Integrate New Weather Station");
+        tester.setTextField("Nation","Francia22");
+        tester.setTextField("Location","Parigi22");
+        tester.setTextField("Altitude","56");
+        tester.submit();
+        tester.assertTextPresent("Weather Stations List");
+
+        tester.clickLinkWithText("Request Maintenance");
+        tester.assertTextPresent("Request On-Site Maintenance");
+        tester.setTextField("op_name","Leonardo");
+        tester.setTextField("op_surname","Zecchin");
+        tester.setTextField("report","Testing");
+        tester.submit("request");
+        tester.assertTextPresent("Weather Stations List");
+
+    }
+    @Test
+    public void requestErrorTest(){
+        tester.beginAt("/main_view");
+
+        tester.clickButtonWithText("Add Weather Station");
+        tester.assertTextPresent("Integrate New Weather Station");
+        tester.setTextField("Nation","Francia33");
+        tester.setTextField("Location","Parigi33");
+        tester.setTextField("Altitude","56");
+        tester.submit();
+        tester.assertTextPresent("Weather Stations List");
+
+        tester.clickLinkWithText("Request Maintenance");
+        tester.assertTextPresent("Request On-Site Maintenance");
+        tester.submit("request");
+        tester.assertTextPresent("ERROR:");
+    }
+
+    @Test
     public void deleteTest(){
         tester.beginAt("/");
         
@@ -243,8 +308,19 @@ public class AcceptanceTest {
         int after = tester.getElementsByXPath("//td").size();
 
         Assert.assertTrue(after<before); //== Because i create a weather station and after i delete it.
+    }
 
 
+    @Test
+    public void fromErrorToMainTest(){
+        tester.beginAt("/");
+
+        tester.clickButtonWithText("Add Weather Station");
+        tester.assertTextPresent("Integrate New Weather Station");
+        tester.submit();
+        tester.assertTextPresent("ERROR:");
+        tester.clickLinkWithText("Back to main page");
+        tester.assertTextPresent("Weather Stations List");
     }
 
 }
