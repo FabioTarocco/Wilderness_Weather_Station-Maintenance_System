@@ -59,8 +59,8 @@ Il nuovo sistema è stato implementato da zero seguendo le linee guida fornite d
 - Nella *integration_view*, il sistema al momento della richiesta di inserimento di una nuova WS deve fornire un codice univoco generato in base alla nazione dove questa verrà installata.  
 - La data dell'installazione della WS viene inserita in modo automatico dal sistema.  
 - Il sistema deve ricevere, come informazioni per completare la richiesta di installazione, la nazione, la posizione della WS e l'altitudine.  
-- Deve essere effettuato un controllo nel caso di campi vuoti o se l'altitudine inserita non è nel range [-10mt, 8000mt]  
-- Nel caso venga commesso uno degli errori precedenti semplicemente viene ricaricata l'integration_view blank.  
+- Deve essere effettuato un controllo nel caso di campi vuoti o se l'altitudine inserita non è nel range [-30mt, 8000mt]  
+- Nel caso venga commesso uno degli errori precedenti il sistema deve rilevare l'errore e passare ad un'interfaccia di errore.
 - Dall'*integration_view* completata l'installazione della WS oppure mediante apposito pulsate si deve tornare alla *main_view*.  
 ### Detail_view:  
 - Dalla *main_view* cliccando sul codice della WS si passa alla *detail_view*.  
@@ -79,11 +79,11 @@ Il nuovo sistema è stato implementato da zero seguendo le linee guida fornite d
 - Inoltre nella detail_view deve esser visualizzato lo storico dei guasti e delle manutenzioni avvenute sulla WS.  
 ### Disable_vs_view:  
 - Dalla *main_view* si deve aver la possibilità di disattivare una WS mediante un pulsante.  
-- Nel momento della disattivazione deve venire richiesta la motivazione per l'operazione e da chi viene richiesta.  
+- Nel momento della disattivazione deve venire richiesta la motivazione per l'operazione e da chi viene richiesta.
+- Anche per la richiesta di disabilitazione deve esserci un controllo sui dati inseriti e conseguente schermata di errore in caso di problemi.
 - Dalla *disable_view* si può tornare alla *main_view* mediante apposito tasto.  
 ### Reactivate_ws_view:  
-- Dalla *main_view* si deve aver la possibilità di disattivare una WS mediante un pulsante.  
-- Nel momento della disattivazione deve venire richiesta la motivazione per l'operazione e da chi viene richiesta.  
+- Dalla *main_view* si deve aver la possibilità di disattivare una WS mediante un pulsante.    
 - Dalla *disable_view* si può tornare alla main_view mediante apposito tasto.  
 ### Report_view:  
 - Dalla *detail_view* deve esser presente l'apposito tasto per richiedere un intervento speciale sul sito di installazione a causa di guasto HW o altro.  
@@ -93,13 +93,16 @@ Il nuovo sistema è stato implementato da zero seguendo le linee guida fornite d
    - Report del guasto  
    - Nome e cognome dell'operatore che effettua la segnalazione  
    - Note aggiuntive  
-- Il sistema per la segnalazione deve fornire: codice WS e Data/ora segnalazione.  
+- Il sistema per la segnalazione deve fornire: codice WS e Data/ora segnalazione.
+- Anche per la richiesta di manutenzione straordinaria deve esserci un controllo sui dati inseriti e conseguente schermata di errore in caso di problemi.
 - Completata l'invio della segnalazione o premendo l'apposito pulsante si deve esser in grado di tornare alla *main_view*.  
 ### Delete_ws_view:  
 - Dalla *main_view* mediante apposito pulsante deve essere possibile eliminare una WS dalla rete.  
 - L'eliminazione deve avvenire solamente dopo una seconda conferma: delete_ws -> conferma -> Eliminazione ws.
 - Anche da questa interfaccia, deve essere presente la possibilità di annullare l'operazione e tornare alla *main_view* mediante apposito pulsante.  
-  
+
+- Per tutte le schermate specifiche deve esserci un controllo e conseguente schermata di errore nel caso in cui non venga trovata la WS su cui è richiesta l'operazione.
+
 ## Scelte di Design
 ### Flag per gli stati di sensori e delle batterie:
 - Per indicare che uno dei sensori ha subito un guasto o se è perfettamente funzionante si è deciso di introdurre 6 flag, una per ogni sensore, che simulano le rotture dei dispositivi. 
