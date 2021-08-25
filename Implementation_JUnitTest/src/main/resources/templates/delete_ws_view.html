@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Wilderness Weather Station Maintenance System</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/delete_ws_view.css">
+
+</head>
+
+<body>
+
+<div id="main_box_container">
+
+  <div id="title_box">
+    <h1>Delete a Station using code</h1>
+  </div>
+
+
+  <form action="delete" method="post">
+    <div class="content">
+      <input type="hidden" name="id" th:value="${station.getId()}" readonly><br>
+      <p>DELETE Weather Station with code: <b><td th:text="${station.getCode()}">IT98878</td></b></p>
+      <input id="submit_button" name="delete" type="submit" value="Delete WS"/>
+    </div>
+  </form>
+
+
+  <div id="link_box">
+    <div id="centered_link"> <a href="main_view"> Back to main page </a> </div>
+  </div>
+
+</div>
+
+</body>
+</html>

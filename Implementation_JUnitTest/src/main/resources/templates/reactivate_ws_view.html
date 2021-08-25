@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wilderness Weather Station Maintenance System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/reactive_ws_view.css">
+    <!--<style type="text/css">
+        #main_box_container{
+            border: 3px solid black;
+            background-color: #CCCCCC ;
+            margin: 0 auto;
+            height: 500px;
+        }
+
+        #title_box{
+            background-color:#E9E9E9;
+            font-weight: bold;
+        }
+
+        #info_section{
+            background-color: #E9E9E9;
+            border: 2px solid black;
+            height: 200px;
+            width: 300px;
+            position: relative;
+            left: 5px;
+        }
+
+        h3{
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            left: 3px;
+            top: 7px;
+
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+
+        #link_box{
+            height: 35px;
+            width: 230px;
+            background-color: #5F5F5D;
+            border-radius: 10px;
+            float: left;
+            margin-right: 5px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        #centered_link{
+            width: 300px; margin: 0 auto;
+            position: relative;
+            left: 5px;
+            top: 1px;
+        }
+
+        #text_inside{
+            position: relative;
+            left: 5px;
+        }
+
+        #re-active_button{
+            border: solid black ;
+        }
+    </style>-->
+</head>
+
+<body>
+
+<div id="main_box_container">
+
+    <div id="title_box">
+        <h1>Reactivating Weather Station Monitoring </h1>
+    </div>
+
+    <div id="info_section">
+        <form action="reactivate" method="post">
+
+            <div id="text_inside">
+                <input type="hidden" name="id" th:value="${station.getId()}" readonly><br>
+
+                <h3>Weather station infos:</h3>
+                WS_CODE:<b><td th:text="${station.getCode()}">IT98878</td></b><br>
+                WS_LOCATION:<td th:text="${station.getWs_location()}">W98°-N98°</td><br>
+                WS_STATUS:<td th:text="${station.getWs_status()}">GREY</td>
+                <br>
+                <h6></h6>
+                <input id="re-active_button" type="submit" name="reactivate" value="RE-ACTIVATE"/><br>
+                <h4></h4>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="link_box">
+        <div id="centered_link"> <a href="main_view"> Back to main page </a> </div>
+    </div>
+
+</div>
+
+</body>
+</html>

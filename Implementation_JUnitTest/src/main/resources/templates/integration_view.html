@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wilderness Weather Station Maintenance System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/integration_view.css">
+
+</head>
+
+<body>
+<div id="main_bar_container">
+    <div id="title_container">
+        <h1 class="title" >Integrate New Weather Station</h1>
+    </div>
+
+    <form action="create" method="post">
+        <input class="box" type="text" name="Nation" placeholder="Nation"><br>
+        <input class="box" type="text" name="Location" placeholder="Location"><br>
+        <input class="box" type="text" name="Altitude" placeholder="Altitude"><br>
+        <input id="submit_button" type="submit" value="Send Request"/>
+    </form>
+
+    <div class="red">+ Nation and Location fields shouldn't be empty!</div>
+    <div class="red">+ Altitude MUST be a value in the range [-30, 8000]</div>
+    <div id="link_box">
+        <div id="centered_link"> <a href="main_view"> Back to main page </a> </div>
+    </div>
+
+
+
+
+</div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+#main_box_container{
+    border: 3px solid black;
+    background-color: #CCCCCC ;
+    margin: 0 auto;
+    height: 700px;
+}
+
+.title_box{
+    background-color: #E9E9E9;
+    font-weight: bold;
+
+}
+
+
+
+.section{
+    background-color: #E9E9E9;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    left: 3px;
+    top: 7px;
+
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.link_box{
+    height: 35px;
+    width: 230px;
+    background-color: #5F5F5D;
+    border-radius: 10px;
+    float: left;
+    margin-right: 5px;
+}
+
+#centered_link{
+    width: 300px; margin: 0 auto;
+    position: relative;
+    left: 5px;
+    top: 1px;
+}
+
+.table_box{
+    border-collapse: collapse;
+    width: 35%;
+    height: 70px;
+    text-align: center;
+}
+
+
+
+textarea {
+    width: 500px;
+    height: 150px;
+    font-family: italic;
+}

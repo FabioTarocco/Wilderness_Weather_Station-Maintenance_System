@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wilderness Weather Station Maintenance System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/disable_ws_view.css">
+
+</head>
+
+<body>
+<div id="main_box_container">
+
+    <div id="title_box">
+        <h1>Disable Weather Station Monitoring </h1>
+    </div>
+
+
+    <div id="text_inside">
+    <form action="disable" method="post">
+
+        <input type="hidden" name="id" th:value="${station.getId()}" readonly><br>
+        <div id="info_section">
+            <div class="sub_title">
+                <h3>Weather station infos:</h3>
+            </div>
+            WS_CODE:<b><td th:text="${station.getCode()}">IT98878</td></b><br>
+            WS_LOCATION:<td th:text="${station.getWs_location()}">W98°-N98°</td><br>
+            WS_STATUS:<td th:text="${station.getWs_status()}">RED</td><br>
+        </div>
+
+        <div class="sub_title">
+            <h3>Request Details:</h3>
+        </div>
+
+        <div id="operator">
+            <h3>Operator Infos:</h3>
+            <input class="box" type="text" name="op_name" placeholder="First Name"><br>
+            <input class="box" type="text" name="op_surname" placeholder="Surname"><br>
+        </div>
+        <div id="reason_box">
+            <div class="bolder">
+                Reason:<br/>
+            </div>
+            <textarea rows="5" cols="60" name="reason" placeholder="Enter the reason for the request for disabling"></textarea>
+            <br/>
+            <div class="red_underline">+ Name, Surname and Reason fields MUST be filled!</div>
+
+            <div id="disable_space">
+                <input id="disable_button" type="submit" name="dis_butt" value="Disable"/><br>
+            </div>
+
+        </div>
+
+        <h6></h6>
+
+
+        <div id="link_box">
+            <div id="centered_link"> <a href="main_view"> Back to main page </a> </div>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+
+</body>
+</html>

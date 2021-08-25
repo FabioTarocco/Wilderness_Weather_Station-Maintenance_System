@@ -1,0 +1,128 @@
+
+#main_box_container{
+    border: 3px solid black;
+    background-color: #CCCCCC ;
+    margin: 0 auto;
+    height: 500px;
+}
+
+#title_box{
+    background-color:#E9E9E9;
+    font-weight: bold;
+
+}
+
+#section{
+    background-color: #E9E9E9;
+    margin-bottom: 10px;
+}
+
+a{
+    color: black;
+    text-decoration: underline;
+    position: relative;
+    text-align: center;
+
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.link_box{
+    height: 35px;
+    width: 180px;
+    background-color: #5F5F5D;
+    border-radius: 10px;
+    float: left;
+    margin-left: 2px;
+}
+
+.centered_link{
+    width: 300px; margin: 0 auto;
+    position: relative;
+    left: 5px;
+    top: 10px;
+
+
+}
+
+.input_submit{
+    background-color: #5F5F5D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 20px;
+    float: left;
+}
+
+
+#table_box{
+    border-collapse: collapse;
+    width: 35%;
+    height: 70px;
+    text-align: center;
+}
+
+.box{
+    background-clip: padding-box;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #E9E9E9;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: black;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: black;
+}
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+#submit_button{
+    font-size: 13px;
+    font-weight: bold;
+    position: relative;
+    left: 200px;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wilderness Weather Station Maintenance System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/detail_view.css">
+
+</head>
+
+<body>
+
+<div id="main_box_container">
+    <div class="title_box">
+        <h1>    Weather Station
+            <td th:text="${station.getCode()}">IT82983</td>
+            Details
+        </h1>
+    </div>
+
+    <div class="section">
+
+        <h2 class="title_box">Station Hardware Status</h2>
+
+            <table class="table_box" border="1">
+                <thead>
+                <tr>
+                    <th>Sensor Status</th>
+                    <th>Battery Status</th>
+                    <th>B1 | B2 | B3</th>
+                    <th># Battery in use</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td th:text="${station.getSensor().getSensorStatus()}">GREEN</td>
+                <td th:text="${station.getBattery().getBatteryStatus()}">GREEN</td>
+                <td th:text="${station.getBattery().printBatteryStatus()}">GOOD</td>
+                <td th:text="${station.getBattery().getIn_use_battery_ordinal()==4}? 'NONE': ${station.getBattery().getIn_use_battery_ordinal()}"> 1</td>
+                </tbody>
+            </table>
+
+        <br><hr>
+
+            <h2 class="title_box">Sensor Moitoring</h2>
+            <table class="table_box" border="1">
+                <thead>
+                <tr>
+                    <th>Temperature [°C]</th>
+                    <th>Pressure [mbar]</th>
+                    <th>Sunshine [watts]</th>
+                    <th>Rainfall [mm/h]</th>
+                    <th>Wind Speed [km/h]</th>
+                    <th>Wind Direction</th>
+                    <th>Altitude [m]</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getSensor().getTemperature()}">34</td>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getSensor().getPressure()}">1024</td>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getSensor().getSunshine()}">1.42132</td>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getSensor().getRainfall()}">1.03</td>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getSensor().getWindspeed()}">12</td>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getSensor().getWinddir()}">NORTH</td>
+                    <td th:text="${station.isDisabled()}? 'N/D': ${station.getWs_altitude()}">300</td>
+                </tbody>
+
+                <tbody>
+                    <td th:text="${station.getSensor().getTemp_sens_status()} ? 'ON' : 'OFF'">ON</td>
+                    <td th:text="${station.getSensor().getPres_sens_status()} ? 'ON' : 'OFF'">OFF</td>
+                    <td th:text="${station.getSensor().getSun_sens_status()} ? 'ON' : 'OFF'">ON</td>
+                    <td th:text="${station.getSensor().getRain_sens_status()} ? 'ON' : 'OFF'">ON</td>
+                    <td th:text="${station.getSensor().getWind_sp_sens_status()} ? 'ON' : 'OFF'">OFF</td>
+                    <td th:text="${station.getSensor().getWind_dir_sens_status()} ? 'ON' : 'OFF'">ON</td>
+                </tbody>
+
+
+
+            </table>
+
+
+        <br><hr>
+
+            <h2 class="title_box">Reports Summary</h2>
+            <textarea th:text="${station.printAllReports()}">[02-01-2021]Tarocco-Fabio: First boot</textarea>
+
+
+
+        <br>
+        <!--
+        <div class="link_box">
+                <a href="report?id=10" th:href="@{report_view(id=${station.getId()})}"> Request On-Site Maintenance </a>
+        </div>
+
+        <div class="link_box">
+                <a href="disable?id=10" th:href="@{disable_ws_view(id=${station.getId()})}"> Disable Weather Station </a>
+        </div>
+        <div class="link_box">
+                <a href="reactivate?id=10" th:href="@{reactivate_ws_view(id=${station.getId()})}"> Re-activate Weather Station </a>
+        </div>
+        -->
+
+        <div class="link_box">
+            <div id="centered_link"> <a href="main_view"> Back to main page </a> </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

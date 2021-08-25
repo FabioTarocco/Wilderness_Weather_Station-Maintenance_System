@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wilderness Weather Station Maintenance System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/main_view.css">
+
+</head>
+
+<body>
+<div id="main_box_container">
+    <div id="title_box">
+        <h1>Weather Stations List</h1>
+    </div>
+
+
+
+    <div id="section">
+        <table id="table_box" border="1">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Nation</th>
+                <th>Install Date</th>
+                <th>Status</th>
+                <th colspan="5">Operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="station: ${stations}">
+                <td th:text="${station.getCode()}"> <b>IT09090</b></td>
+                <td th:text="${station.getWs_nation()}"> Verona,Italy </td>
+                <td th:text="${station.getWs_install_date()}"> 08-02-2020 </td>
+                <td th:text="${station.getWs_status()}">Yellow</td>
+                <td> <a href="detail_view" th:href="@{detail_view(id=${station.getId()})}"> Detail </a></td>
+                <td> <a href="disable" th:href="@{disable_ws_view(id=${station.getId()})}"> Disable </a></td>
+                <td> <a href="reactivate" th:href="@{reactivate_ws_view(id=${station.getId()})}"> Reactivate </a></td>
+                <td> <a href="report" th:href="@{report_view(id=${station.getId()})}"> Request Maintenance </a></td>
+                <td> <a href="delete" th:href="@{delete_ws_view(id=${station.getId()})}"> Delete </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <div>
+        <form action="integration_view">
+            <input class="input_submit" type="submit" value="Add Weather Station"/>
+        </form>
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>
